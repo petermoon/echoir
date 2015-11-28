@@ -1,0 +1,2 @@
+workon python34
+igclient --receiver-on --sleep 5 | python /home/pi/scribbles/python/echoir/record.py

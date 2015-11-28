@@ -1,0 +1,15 @@
+{
+  "skills": {
+    "amzn1.echo-sdk-ams.app.sample1": "remote",
+    "amzn1.echo-sdk-ams.app.sample2": "apple tv",
+    "amzn1.echo-sdk-ams.app.sample3": "xbox"
+  },
+  "queue_url": "https://queue.amazonaws.com/123456789/queueName",
+  "responses": [
+    "<speak>Roger that.</speak>",
+    "<speak>Yes master.</speak>",
+    "<speak>Will do.</speak>",
+    "<speak>Done!</speak>",
+    "<speak>Dude.</speak>"
+  ]
+}
