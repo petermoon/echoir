@@ -22,7 +22,8 @@ sequences = {'all_off': ['tv_off.txt', 'receiver_off.txt',
                           'receiver_apple_tv.txt',
                           'apple_tv_home.txt'],
              'xbox': ['tv_on.txt', 'receiver_xbox.txt', 'xbox_on.txt'],
-             'raspberry_pie': ['tv_on.txt', 'receiver_raspberry_pie.txt']}
+             'raspberry_pie': ['tv_on.txt', 'receiver_raspberry_pie.txt'],
+             'bluetooth': ['receiver_bluetooth.txt']}
 keys = ('ActionA', 'ActionB', 'ActionC', 'ActionD', 'ActionE', 'ActionF')
 signals_path = '/home/pi/scribbles/python/echoir/signals/'
 
@@ -35,6 +36,7 @@ def handle_seq(sequence):
 
 def send_signal(signal):
     signal_full = os.path.join(signals_path, signal)
+    log('SENT: {}'.format(signal_full))
     if os.path.isfile(signal_full):
         call(['/usr/bin/igclient', '--send', signal_full])
         log("    Sent: {}".format(signal))
@@ -69,8 +71,11 @@ def handle_power(slots):
 
 def handle_volume(slots):
     signal = 'receiver_volume_{}.txt'.format(slots['UpDown']['value'])
-    reps = int(slots['Repeat']['value'])
-    sequence = [signal for i in range(reps)]
+    try:
+        reps = int(slots['Repeat']['value'])
+        sequence = [signal for i in range(reps)]
+    except (ValueError):
+        sequence = [signal]
     handle_seq(sequence)
 
 
