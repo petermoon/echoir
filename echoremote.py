@@ -31,7 +31,7 @@ signals_path = '/home/pi/scribbles/python/echoir/signals/'
 def handle_seq(sequence):
     for signal in sequence:
         send_signal(signal)
-        sleep(0.05)
+        sleep(0.2)
 
 
 def send_signal(signal):
